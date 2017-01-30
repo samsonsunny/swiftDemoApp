@@ -10,13 +10,15 @@ import UIKit
 
 class MainTabBarController: UITabBarController {
 	
+	let defaults = UserDefaults.standard
+	
 	override func viewDidLoad() {
 		
 		super.viewDidLoad()
 		
 		// if not logged in go to main login page
 		
-		let defaults = UserDefaults.standard
+		
 
 		if !defaults.bool(forKey: "isLoggedIn") {
 			

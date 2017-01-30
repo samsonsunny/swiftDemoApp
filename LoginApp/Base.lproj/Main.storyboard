@@ -124,9 +124,9 @@
                         <color key="backgroundColor" red="0.33725490200000002" green="1" blue="0.90588235289999997" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
-                        <outlet property="emailId" destination="0v4-j0-ROc" id="Snc-nb-Ydb"/>
-                        <outlet property="password" destination="Ksf-hl-nmY" id="G3d-cd-96F"/>
-                        <outlet property="userName" destination="0sc-E1-c5M" id="lPX-N6-AIC"/>
+                        <outlet property="emailIdField" destination="0v4-j0-ROc" id="l3H-fH-xfN"/>
+                        <outlet property="passwordField" destination="Ksf-hl-nmY" id="70x-Lj-oXI"/>
+                        <outlet property="userNameField" destination="0sc-E1-c5M" id="f5P-kj-fTj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aBv-0y-eXb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -222,7 +222,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rRi-Ji-c3p">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rRi-Ji-c3p">
                                 <rect key="frame" x="36" y="145" width="100" height="43"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -266,8 +266,8 @@
                         <color key="backgroundColor" red="0.33725490200000002" green="1" blue="0.90588235289999997" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
-                        <outlet property="password" destination="GKv-Ej-wq8" id="nbc-5E-Fze"/>
-                        <outlet property="userName" destination="XW5-av-nkY" id="9LZ-Mw-1eK"/>
+                        <outlet property="emailField" destination="XW5-av-nkY" id="a9R-CG-9tO"/>
+                        <outlet property="passwordField" destination="GKv-Ej-wq8" id="wiu-mj-7zd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ucr-yv-Eoc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -317,7 +317,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t20-Te-Fv3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2374" y="-818"/>
+            <point key="canvasLocation" x="2340" y="-882"/>
         </scene>
         <!--Change Password View Controller-->
         <scene sceneID="OKa-Ny-X0E">
@@ -405,7 +405,7 @@
             <objects>
                 <navigationController storyboardIdentifier="NavigationControllerID" automaticallyAdjustsScrollViewInsets="NO" id="bdZ-Ti-f1a" customClass="NavigationController" customModule="LoginApp" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" hidden="YES" contentMode="scaleToFill" misplaced="YES" id="T01-9B-bjg">
+                    <navigationBar key="navigationBar" hidden="YES" contentMode="scaleToFill" id="T01-9B-bjg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
