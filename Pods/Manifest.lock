@@ -1,0 +1,12 @@
+PODS:
+  - MagicalRecord/Shorthand (2.2)
+
+DEPENDENCIES:
+  - MagicalRecord/Shorthand
+
+SPEC CHECKSUMS:
+  MagicalRecord: 2dc87179ae7c1f2a274442624ec65a07d4357a6f
+
+PODFILE CHECKSUM: 5f8f441d8d0acfc355e47663aae05a32745f6cfe
+
+COCOAPODS: 1.2.0
