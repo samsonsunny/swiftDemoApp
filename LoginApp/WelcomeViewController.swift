@@ -12,7 +12,7 @@ class WelcomeViewController: UIViewController {
 	
 	@IBOutlet weak var welcomeLabel: UILabel!
 	
-	let userDefaults = UserDefaults.standard
+	let defaults = UserDefaults.standard
 
 	override func viewDidLoad() {
 		
@@ -20,6 +20,16 @@ class WelcomeViewController: UIViewController {
 		
 		self.tabBarController?.selectedIndex = 1
 		
+		self.navigationItem.title = "Home Page"
+		
+		let emailId = defaults.object(forKey: "loggedInUserEmail") as? String
+		
+		if let user: UserInfo = UserInfo.mr_findFirst(byAttribute: "emailId", withValue: emailId) as? UserInfo
+		{
+			if let name = user.userName {
+				renderWelcome(message: name)
+			}
+		}		
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {

@@ -35,7 +35,7 @@ class LoginViewController: UIViewController {
 		super.didReceiveMemoryWarning()
 	}
 	
-	func validate(email: String, password: String) -> (Bool,String) {
+	func validate(email: String, password: String) -> (success: Bool,text: String) {
 		
 		if email.isEmpty || password.isEmpty {
 			
@@ -75,16 +75,24 @@ class LoginViewController: UIViewController {
 			
 			let response = validate(email: email, password: password)
 		
-			if !response.0 {
+			if !response.success {
 				
-				showAlert(message: response.1)
+				showAlert(message: response.text)
 				return
 			}
 	
 			if let user: UserInfo = UserInfo.mr_findFirst(byAttribute: "emailId", withValue: email) as? UserInfo
 			{
 				
+				guard let storedPassword = user.password, password == storedPassword else {
+					
+					showAlert(message: "Please check your password")
+					
+					return
+				}
 				defaults.set(user.userName, forKey: "loggedInUser")
+				
+				defaults.set(user.emailId, forKey: "loggedInUserEmail")
 				
 				defaults.set(true, forKey: "isLoggedIn")
 				
@@ -93,6 +101,9 @@ class LoginViewController: UIViewController {
 				if let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarControllerID") as? MainTabBarController {
 					
 					self.navigationController?.pushViewController(nextViewController, animated: true)
+				}else{
+					
+					showAlert(message: "Please try again later")
 				}
 			}else{
 				

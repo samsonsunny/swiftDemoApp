@@ -40,7 +40,7 @@ class SignupViewController: UIViewController {
 		
 	}
 	
-	func validate(email: String, password: String, name: String) -> (Bool,String) {
+	func validate(email: String, password: String, name: String) -> (success: Bool,text: String) {
 		
 		if email.isEmpty || password.isEmpty || name.isEmpty {
 			
@@ -80,9 +80,9 @@ class SignupViewController: UIViewController {
 			
 			let response = validate(email: email, password: password, name: userName)
 			
-			if !response.0 {
+			if !response.success {
 				
-				showAlert(message: response.1)
+				showAlert(message: response.text)
 				return
 			}
 			
@@ -105,6 +105,8 @@ class SignupViewController: UIViewController {
 			context?.mr_saveToPersistentStore(completion: nil)
 			
 			defaults.set(userName, forKey: "loggedInUser")
+			
+			defaults.set(email, forKey: "loggedInUserEmail")
 			
 			defaults.set(true, forKey: "isLoggedIn")
 			

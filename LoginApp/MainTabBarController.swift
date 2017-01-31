@@ -16,26 +16,11 @@ class MainTabBarController: UITabBarController {
 		
 		super.viewDidLoad()
 		
-		// if not logged in go to main login page
-		
-		
-
-		if !defaults.bool(forKey: "isLoggedIn") {
-			
-			print("not logged in")
-			
-			if let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "MainViewControllerID") as? MainViewController {
-				
-				self.navigationController?.pushViewController(nextViewController, animated: true)
-			}
-		}else{
-			
-			self.selectedIndex = 1
-			
-			}
+		self.selectedIndex = 1
 	}
 	
 	override func didReceiveMemoryWarning() {
+		
 		super.didReceiveMemoryWarning()
 	}
 	
