@@ -16,17 +16,17 @@ class NavigationController: UINavigationController {
 		
 		super.viewDidLoad()
 		
-		if !defaults.bool(forKey: "isLoggedIn") {
-			
-			if let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "MainViewControllerID") as? MainViewController {
-				
-				self.pushViewController(nextViewController, animated: true)
-			}
-		}else{
+		if defaults.bool(forKey: "isLoggedIn") {
 			
 			if let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarControllerID") as? MainTabBarController {
 				
-				self.pushViewController(nextViewController, animated: true)
+				let appDelegate = UIApplication.shared.delegate as! AppDelegate
+				appDelegate.window?.rootViewController = nextViewController
+				
+				//	self.pushViewController(nextViewController, animated: true)
+				
+				//self.show(nextViewController, sender: nil)
+				//	self.present(nextViewController, animated: true, completion: nil)
 			}
 		}
 	}

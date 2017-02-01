@@ -119,4 +119,9 @@ class SignupViewController: UIViewController {
 		}
 	}
 	
+	@IBAction func pushToLogin(_ sender: Any) {
+		
+		_ = self.navigationController?.popViewController(animated: true)
+	}
+	
 }

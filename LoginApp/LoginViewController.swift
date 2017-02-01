@@ -111,4 +111,13 @@ class LoginViewController: UIViewController {
 			}
 		}
 	}
+	
+	@IBAction func pushToSignUp(_ sender: Any) {
+		
+		if let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "SignupViewControllerID") as? SignupViewController {
+			
+			self.navigationController?.pushViewController(nextViewController, animated: true)
+		}
+	}
+	
 }
