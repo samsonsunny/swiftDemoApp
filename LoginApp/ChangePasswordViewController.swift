@@ -52,10 +52,8 @@ class ChangePasswordViewController: UIViewController {
 		}
 		
 		let context	= NSManagedObjectContext.mr_default()
-
-		let emailId = defaults.object(forKey: "loggedInUserEmail") as? String
 		
-		guard let user: UserInfo = UserInfo.mr_findFirst(byAttribute: "emailId", withValue: emailId) as? UserInfo else {
+		guard let emailId = defaults.object(forKey: "loggedInUserEmail") as? String, let user: UserInfo = UserInfo.mr_findFirst(byAttribute: "emailId", withValue: emailId) as? UserInfo else {
 			
 			showAlert(message: "User data is not available in DB")
 			
@@ -75,7 +73,7 @@ class ChangePasswordViewController: UIViewController {
 			
 			if response {
 				
-				self.showAlert(message: "Password Resetted successfully")
+				self.showAlert(message: "Password Updated")
 				
 				return
 			}
