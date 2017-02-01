@@ -7,56 +7,77 @@
 //
 
 import UIKit
+import MagicalRecord
 
 class ChangePasswordViewController: UIViewController {
 	
-	@IBOutlet weak var currentPassword: UITextField!
-	@IBOutlet weak var newPassword: UITextField!
-	@IBOutlet weak var navigationBar: UINavigationItem!
+	@IBOutlet weak var oldPasswordField: UITextField!
 	
-	@IBOutlet var oldPassword: String?
+	@IBOutlet weak var newPasswordField: UITextField!
+	
 	
 	let defaults = UserDefaults.standard
 
 	override func viewDidLoad() {
+		
 		super.viewDidLoad()
-//		navigationBar.title = "Change Password"
-		print(oldPassword!)
+		
+		self.navigationItem.title = "Change Password"
+
 	}
 	
 	override func didReceiveMemoryWarning() {
+		
 		super.didReceiveMemoryWarning()
+	}
+	
+	func showAlert(message: String) {
+		
+		let alertController = UIAlertController(title: "", message: message, preferredStyle: .alert)
+		
+		let OKAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+		alertController.addAction(OKAction)
+		
+		self.present(alertController, animated: true, completion: nil)
+		
 	}
 	
 	@IBAction func updatePassword() {
 		
-		if let currentPass: String = currentPassword.text, currentPass.characters.count > 0, let newPass: String = newPassword.text, newPass.characters.count > 0{
+		guard let oldPassword = oldPasswordField.text, let newPassword = newPasswordField.text else {
 			
-			let password = oldPassword ?? ""
+			showAlert(message: "Please provide value in both the fields")
 			
-			if password == currentPass {
-				
-				if var userDatabase:[String: String] = defaults.dictionary(forKey: "userDatabase")as? [String : String]  {
-					
-					if let key = defaults.object(forKey: "loggedInUser") as? String {
-						
-						userDatabase[key] = newPass
-						defaults.set(userDatabase, forKey: "userDatabase")
-						defaults.synchronize()
-					}
-				}
-				self.dismiss(animated: true, completion: nil)
-			}else{
-				print("please enter correct old password")
-			}
-		}else{
-			print("please enter both the fields")
+			return
 		}
-
+		
+		let context	= NSManagedObjectContext.mr_default()
+		
+		guard let emailId = defaults.object(forKey: "loggedInUserEmail") as? String, let user: UserInfo = UserInfo.mr_findFirst(byAttribute: "emailId", withValue: emailId) as? UserInfo else {
+			
+			showAlert(message: "User data is not available in DB")
+			
+			return
+		}
+		
+		guard let password = user.password, password == oldPassword else {
+			
+			showAlert(message: "Please provide old password")
+			
+			return
+		}
+		
+		user.password = newPassword
+		
+		context?.mr_saveToPersistentStore(completion: { (response, error) in
+			
+			if response {
+				
+				self.showAlert(message: "Password Updated")
+				
+				return
+			}
+			self.showAlert(message: "Oops! password not able to change")
+		})
 	}
-	
-	@IBAction func closePage() {
-		self.dismiss(animated: true, completion: nil)
-	}
-	
 }

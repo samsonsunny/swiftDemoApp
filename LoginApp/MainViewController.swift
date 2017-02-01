@@ -13,11 +13,7 @@ class MainViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-//		let defaults = UserDefaults.standard
 		
-		//
-//		navigationBar.title = "Main Page"
-//		navigationBar.hidesBackButton = true
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {

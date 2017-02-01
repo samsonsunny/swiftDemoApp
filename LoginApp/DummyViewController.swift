@@ -16,6 +16,8 @@ class DummyViewController: UIViewController {
 		
 		self.tabBarController?.selectedIndex = 0
 		
+		self.navigationItem.title = "Dummy Page"
+		
 	}
 	
 	override func didReceiveMemoryWarning() {

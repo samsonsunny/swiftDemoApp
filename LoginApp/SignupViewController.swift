@@ -14,11 +14,11 @@ import MagicalRecord
 
 class SignupViewController: UIViewController {
 	
-	@IBOutlet weak var userName: UITextField!
+	@IBOutlet weak var userNameField: UITextField!
 	
-	@IBOutlet weak var password: UITextField!
+	@IBOutlet weak var passwordField: UITextField!
 	
-	@IBOutlet weak var emailId: UITextField!
+	@IBOutlet weak var emailIdField: UITextField!
 	
 	let defaults = UserDefaults.standard
 	
@@ -26,81 +26,97 @@ class SignupViewController: UIViewController {
 		
 		super.viewDidLoad()
 		
-//		var response = self.validate(email: emailId.text, password: password.text, name: userName.text)
-		
-		//		var isDetailsStored = true
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
 		
 		super.viewWillAppear(true)
-	
+		
 	}
 	
 	override func didReceiveMemoryWarning() {
 		
 		super.didReceiveMemoryWarning()
+		
 	}
 	
-	func validate(email: String, password: String, name: String) -> String {
+	func validate(email: String, password: String, name: String) -> (success: Bool,text: String) {
 		
-		return "Validated User Details"
+		if email.isEmpty || password.isEmpty || name.isEmpty {
+			
+			return (false,"Please provide data in all the fields.")
+			
+		}
+		if !isValid(email: email) {
+			
+			return (false,"Please provide valid email id.")
+		
+		}
+		return (true,"Success")
+	}
+	
+	func isValid(email:String) -> Bool {
+		
+		let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}"
+		
+		return NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluate(with: email)
+		
+	}
+	
+	func showAlert(message: String) {
+		
+		let alertController = UIAlertController(title: "", message: message, preferredStyle: .alert)
+		
+		let OKAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+		alertController.addAction(OKAction)
+		
+		self.present(alertController, animated: true, completion: nil)
+		
 	}
 	
 	@IBAction func registerUser() {
 		
-//		let context = NSManagedObjectContext.mr_default()
-//		
-//		let userInfo: UserInfo = UserInfo.mr_create(in: context) as! UserInfo
-//		
-//		userInfo.emailId = "hello@hello.com"
-//		userInfo.password = "password"
-//		userInfo.userName = "test"
-//		
-//		context?.mr_saveToPersistentStoreAndWait()
-//		
-//			context?.mr_saveToPersistentStore(completion: nil)
-		
-		
-		if let name: String = userName.text, name.characters.count > 0, let tempPassword: String = password.text, tempPassword.characters.count > 0{
+		if let email = emailIdField.text, let password = passwordField.text, let userName = userNameField.text {
 			
-			print(name)
-			print(tempPassword)
+			let response = validate(email: email, password: password, name: userName)
 			
-			if let userDatabaseDict:[String: String] = defaults.dictionary(forKey: "userDatabase")as? [String : String] {
-				var userDatabase = userDatabaseDict
-				userDatabase[name] = tempPassword
-				defaults.set(userDatabase, forKey: "userDatabase")
-				defaults.set(name, forKey: "loggedInUser")
-				defaults.set(true, forKey: "isLoggedIn")
-				defaults.synchronize()
+			if !response.success {
 				
-				if let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "WelcomeViewControllerID") as? WelcomeViewController {
-					
-					self.navigationController?.pushViewController(nextViewController, animated: true)
-				}
-
-			}else{
-				var userDatabase = [String: String]()
-				userDatabase[name] = tempPassword
-				defaults.set(userDatabase, forKey: "userDatabase")
-				defaults.set(name, forKey: "loggedInUser")
-				defaults.synchronize()
-
-				if let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "WelcomeViewControllerID") as? WelcomeViewController {
-					
-					self.navigationController?.pushViewController(nextViewController, animated: true)
-				}
+				showAlert(message: response.text)
+				return
 			}
 			
-		}else {
-			print("please enter user name and password")
+			if UserInfo.mr_findFirst(byAttribute: "emailId", withValue: email) != nil
+			{
+				showAlert(message: "Already have an account")
+				return
+			}
+			
+			let context	= NSManagedObjectContext.mr_default()
+			
+			let user = UserInfo.mr_create(in: context) as? UserInfo
+			
+			user?.emailId = email
+			
+			user?.password = password
+			
+			user?.userName = userName
+			
+			context?.mr_saveToPersistentStore(completion: nil)
+			
+			defaults.set(userName, forKey: "loggedInUser")
+			
+			defaults.set(email, forKey: "loggedInUserEmail")
+			
+			defaults.set(true, forKey: "isLoggedIn")
+			
+			defaults.synchronize()
+			
+			if let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarControllerID") as? MainTabBarController {
+				
+				self.navigationController?.pushViewController(nextViewController, animated: true)
+			}
 		}
-
 	}
 	
-	override func viewWillDisappear(_ animated: Bool) {
-		super.viewWillDisappear(true)
-		print(defaults.dictionary(forKey: "userDatabase") ?? "no value")
-	}
 }

@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import CoreData
+import MagicalRecord
 
 class LoginViewController: UIViewController {
 	
-	@IBOutlet weak var userName: UITextField!
+	
+	@IBOutlet weak var emailField: UITextField!
 
-	@IBOutlet weak var password: UITextField!
+	@IBOutlet weak var passwordField: UITextField!
 	
 	let defaults = UserDefaults.standard
 	
@@ -32,45 +35,80 @@ class LoginViewController: UIViewController {
 		super.didReceiveMemoryWarning()
 	}
 	
-	@IBAction func checkLoginCredentials() {
+	func validate(email: String, password: String) -> (success: Bool,text: String) {
 		
-//		let array = UserInfo.mr_findAll() as? [UserInfo]
-//		
-//		print(array?.first?.emailId)
-
-		if let name: String = userName.text, name.characters.count > 0, let tempPassword: String = password.text, tempPassword.characters.count > 0{
+		if email.isEmpty || password.isEmpty {
 			
-			if let userDatabase:[String: String] = defaults.dictionary(forKey: "userDatabase") as? [String : String]  {
-				
-				if userDatabase[name] != nil, userDatabase[name] == tempPassword {
-					print("correct password")
-					
-					defaults.set(name, forKey: "loggedInUser")
-					
-					defaults.set(true, forKey: "isLoggedIn")
-					
-					defaults.synchronize()
-					
-					
-					
-					if let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarControllerID") as? MainTabBarController {
-
-						self.navigationController?.pushViewController(nextViewController, animated: true)
-					}
-
-
-				}else{
-					print("please enter correct user name and password")
-				}
-			}else{
-				print("no one registered")
-			}
+			return (false,"Please provide data in all the fields.")
 			
-		}else {
-			print("please enter user name and password")
 		}
-
+		if !isValid(email: email) {
+			
+			return (false,"Please provide valid email id.")
+			
+		}
+		return (true,"Success")
+	}
+	
+	func isValid(email:String) -> Bool {
+		
+		let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}"
+		
+		return NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluate(with: email)
+		
 	}
 
+	func showAlert(message: String) {
+		
+		let alertController = UIAlertController(title: "", message: message, preferredStyle: .alert)
+		
+		let OKAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+		alertController.addAction(OKAction)
+		
+		self.present(alertController, animated: true, completion: nil)
+		
+	}
 	
+	@IBAction func checkLoginCredentials() {
+		
+		if let email = emailField.text, let password = passwordField.text {
+			
+			let response = validate(email: email, password: password)
+		
+			if !response.success {
+				
+				showAlert(message: response.text)
+				return
+			}
+	
+			if let user: UserInfo = UserInfo.mr_findFirst(byAttribute: "emailId", withValue: email) as? UserInfo
+			{
+				
+				guard let storedPassword = user.password, password == storedPassword else {
+					
+					showAlert(message: "Please check your password")
+					
+					return
+				}
+				defaults.set(user.userName, forKey: "loggedInUser")
+				
+				defaults.set(user.emailId, forKey: "loggedInUserEmail")
+				
+				defaults.set(true, forKey: "isLoggedIn")
+				
+				defaults.synchronize()
+				
+				if let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarControllerID") as? MainTabBarController {
+					
+					self.navigationController?.pushViewController(nextViewController, animated: true)
+				}else{
+					
+					showAlert(message: "Please try again later")
+				}
+			}else{
+				
+				showAlert(message: "Login doesn't exist")
+			}
+		}
+	}
 }
