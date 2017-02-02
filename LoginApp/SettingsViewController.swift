@@ -12,6 +12,8 @@ class SettingsViewController: UITableViewController{
 	
 	let defaults = UserDefaults.standard
 	
+	let alert = AlertUtil()
+	
 	override func viewDidLoad() {
 		
 		super.viewDidLoad()
@@ -41,14 +43,16 @@ class SettingsViewController: UITableViewController{
 				self.navigationController?.pushViewController(nextViewController, animated: true)
 			}
 		}else if indexPath.section == 1 {
-			
-			showAlert(message: "Sure you want to logout?")
+		
+			let OKAction = UIAlertAction(title: "OK", style: .default, handler: doLogout)
+		
+			alert.showAlert(message: "Are you sure to logout?", OKAction: OKAction, on: self)
 		}
 	}
 	
 	func doLogout(action: UIAlertAction) {
-		
-		defaults.set(false, forKey: "isLoggedIn")
+	
+		self.defaults.set(false, forKey: "isLoggedIn")
 		
 		if let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "NavigationControllerID") as? NavigationController {
 			
@@ -56,20 +60,5 @@ class SettingsViewController: UITableViewController{
 			
 			appDelegate.window?.rootViewController = nextViewController
 		}
-	}
-	
-	func showAlert(message: String) {
-		
-		let alertController = UIAlertController(title: "", message: message, preferredStyle: .alert)
-		
-		let OKAction = UIAlertAction(title: "OK", style: .default, handler: doLogout)
-		
-		alertController.addAction(OKAction)
-		
-		let CancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
-		
-		alertController.addAction(CancelAction)
-		
-		self.present(alertController, animated: true, completion: nil)
 	}
 }

@@ -12,6 +12,8 @@
 		222BE30D1E389D7500FF48D1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222BE30C1E389D7500FF48D1 /* LoginViewController.swift */; };
 		222BE30F1E38B66000FF48D1 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222BE30E1E38B65F00FF48D1 /* WelcomeViewController.swift */; };
 		222BE3111E38E15200FF48D1 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222BE3101E38E15200FF48D1 /* ChangePasswordViewController.swift */; };
+		223E0C491E4322FF004A474C /* AlertUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223E0C481E4322FF004A474C /* AlertUtil.swift */; };
+		223E0C4B1E43230B004A474C /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223E0C4A1E43230B004A474C /* Helpers.swift */; };
 		224245281E3F88EB0075249E /* settingsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224245271E3F88EB0075249E /* settingsTableCell.swift */; };
 		22EB01A81E407C5A00F9BB1D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EB01A71E407C5A00F9BB1D /* ProfileViewController.swift */; };
 		22EB01AB1E40A57F00F9BB1D /* settings_ic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 22EB01AA1E40A57F00F9BB1D /* settings_ic@2x.png */; };
@@ -60,6 +62,8 @@
 		222BE30C1E389D7500FF48D1 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		222BE30E1E38B65F00FF48D1 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		222BE3101E38E15200FF48D1 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
+		223E0C481E4322FF004A474C /* AlertUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertUtil.swift; sourceTree = "<group>"; };
+		223E0C4A1E43230B004A474C /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		224245271E3F88EB0075249E /* settingsTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = settingsTableCell.swift; sourceTree = "<group>"; };
 		22EB01A71E407C5A00F9BB1D /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		22EB01AA1E40A57F00F9BB1D /* settings_ic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings_ic@2x.png"; sourceTree = "<group>"; };
@@ -136,6 +140,15 @@
 			name = ViewController;
 			sourceTree = "<group>";
 		};
+		223E0C471E4322F1004A474C /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				223E0C481E4322FF004A474C /* AlertUtil.swift */,
+				223E0C4A1E43230B004A474C /* Helpers.swift */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
 		224245261E3F88CB0075249E /* TableView */ = {
 			isa = PBXGroup;
 			children = (
@@ -180,6 +193,7 @@
 		22EBC0A41E3895B50088B1A2 /* LoginApp */ = {
 			isa = PBXGroup;
 			children = (
+				223E0C471E4322F1004A474C /* Utils */,
 				224245261E3F88CB0075249E /* TableView */,
 				220B963A1E3F26C900115845 /* ViewController */,
 				22EBC0A51E3895B50088B1A2 /* AppDelegate.swift */,
@@ -523,11 +537,13 @@
 				22FD678D1E3B309B00E2003A /* NavigationController.swift in Sources */,
 				22FD678F1E3B71FC00E2003A /* MainTabBarController.swift in Sources */,
 				22FD67911E3B845D00E2003A /* SettingsViewController.swift in Sources */,
+				223E0C491E4322FF004A474C /* AlertUtil.swift in Sources */,
 				222BE3111E38E15200FF48D1 /* ChangePasswordViewController.swift in Sources */,
 				22EBC0AE1E3895B50088B1A2 /* LoginApp.xcdatamodeld in Sources */,
 				222BE30B1E389D0300FF48D1 /* SignupViewController.swift in Sources */,
 				222BE30F1E38B66000FF48D1 /* WelcomeViewController.swift in Sources */,
 				222BE30D1E389D7500FF48D1 /* LoginViewController.swift in Sources */,
+				223E0C4B1E43230B004A474C /* Helpers.swift in Sources */,
 				220650B01E420D26009E4BBB /* UsersTableViewCell.swift in Sources */,
 				22EB01A81E407C5A00F9BB1D /* ProfileViewController.swift in Sources */,
 				22EBC0A61E3895B50088B1A2 /* AppDelegate.swift in Sources */,
