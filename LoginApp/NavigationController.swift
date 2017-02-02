@@ -16,17 +16,11 @@ class NavigationController: UINavigationController {
 		
 		super.viewDidLoad()
 		
-		if defaults.bool(forKey: "isLoggedIn") {
+		if !defaults.bool(forKey: "isLoggedIn") {
 			
-			if let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarControllerID") as? MainTabBarController {
+			if let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "MainViewControllerID") as? MainViewController {
 				
-				let appDelegate = UIApplication.shared.delegate as! AppDelegate
-				appDelegate.window?.rootViewController = nextViewController
-				
-				//	self.pushViewController(nextViewController, animated: true)
-				
-				//self.show(nextViewController, sender: nil)
-				//	self.present(nextViewController, animated: true, completion: nil)
+				self.addChildViewController(nextViewController)
 			}
 		}
 	}
@@ -34,13 +28,10 @@ class NavigationController: UINavigationController {
 	override func viewWillAppear(_ animated: Bool) {
 		
 		super.viewWillAppear(true)
-		
 	}
 	
 	override func didReceiveMemoryWarning() {
 		
 		super.didReceiveMemoryWarning()
-		
 	}
-	
 }

@@ -26,6 +26,8 @@ class SignupViewController: UIViewController {
 		
 		super.viewDidLoad()
 		
+		self.navigationItem.setHidesBackButton(true, animated: true)
+		
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {

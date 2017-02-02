@@ -15,10 +15,8 @@ class SettingsViewController: UITableViewController{
 	override func viewDidLoad() {
 		
 		super.viewDidLoad()
-
-		self.tabBarController?.selectedIndex = 2
 		
-		self.navigationItem.title = "Settings Page"
+		self.tabBarController?.selectedIndex = 2
 		
 		self.tableView.tableFooterView = UIView()
 	}
@@ -26,6 +24,8 @@ class SettingsViewController: UITableViewController{
 	override func viewWillAppear(_ animated: Bool) {
 		
 		super.viewWillAppear(true)
+		
+		self.tabBarController?.title = "Settings"
 	}
 	
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -33,6 +33,10 @@ class SettingsViewController: UITableViewController{
 		if indexPath.section == 0 {
 			
 			if let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewControllerID") as? ProfileViewController {
+				
+				nextViewController.name = defaults.object(forKey: "loggedInUser") as! String
+				
+				nextViewController.email = defaults.object(forKey: "loggedInUserEmail") as! String
 				
 				self.navigationController?.pushViewController(nextViewController, animated: true)
 			}
@@ -45,8 +49,13 @@ class SettingsViewController: UITableViewController{
 	func doLogout(action: UIAlertAction) {
 		
 		defaults.set(false, forKey: "isLoggedIn")
-
-		_ = self.tabBarController?.navigationController?.popToRootViewController(animated: true)
+		
+		if let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "NavigationControllerID") as? NavigationController {
+			
+			let appDelegate = UIApplication.shared.delegate as! AppDelegate
+			
+			appDelegate.window?.rootViewController = nextViewController
+		}
 	}
 	
 	func showAlert(message: String) {

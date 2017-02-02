@@ -20,8 +20,6 @@ class WelcomeViewController: UIViewController {
 		
 		self.tabBarController?.selectedIndex = 1
 		
-		self.navigationItem.title = "Home Page"
-		
 		let emailId = defaults.object(forKey: "loggedInUserEmail") as? String
 		
 		if let user: UserInfo = UserInfo.mr_findFirst(byAttribute: "emailId", withValue: emailId) as? UserInfo
@@ -29,13 +27,15 @@ class WelcomeViewController: UIViewController {
 			if let name = user.userName {
 				renderWelcome(message: name)
 			}
-		}		
+		}
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
 		
 		super.viewWillAppear(true)
 		
+		self.tabBarController?.title = "Profile"
+
 	}
 	
 	func renderWelcome(message: String) {

@@ -12,10 +12,19 @@ class ProfileViewController: UITableViewController{
 
 	let defaults = UserDefaults.standard
 	
-	@IBOutlet weak var userName: UILabel!
+	@IBOutlet weak var emailField: UILabel!
 	
-	@IBOutlet weak var email: UILabel!
+	@IBOutlet weak var nameField: UILabel!
+	
+	@IBOutlet weak var changePasswordCell: UITableViewCell!
+	
+	var name: String = ""
+	
+	var email: String = ""
+	
+	var isShowChangePassword: Bool = true
 
+	
 	override func viewDidLoad() {
 		
 		super.viewDidLoad()
@@ -24,9 +33,14 @@ class ProfileViewController: UITableViewController{
 		
 		self.tableView.tableFooterView = UIView()
 		
-		userName.text = defaults.object(forKey: "loggedInUserEmail") as? String
+		emailField.text = email
 		
-		email.text = defaults.object(forKey: "loggedInUser") as? String
+		nameField.text = name
+		
+		if !isShowChangePassword {
+			
+			self.changePasswordCell.isHidden = true
+		}
 	}
 	
 	override func didReceiveMemoryWarning() {
