@@ -14,6 +14,7 @@
 		222BE3111E38E15200FF48D1 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222BE3101E38E15200FF48D1 /* ChangePasswordViewController.swift */; };
 		223E0C491E4322FF004A474C /* AlertUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223E0C481E4322FF004A474C /* AlertUtil.swift */; };
 		223E0C4B1E43230B004A474C /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223E0C4A1E43230B004A474C /* Helpers.swift */; };
+		223E0C511E4348E6004A474C /* home@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 223E0C501E4348E6004A474C /* home@2x.png */; };
 		224245281E3F88EB0075249E /* settingsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224245271E3F88EB0075249E /* settingsTableCell.swift */; };
 		22EB01A81E407C5A00F9BB1D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EB01A71E407C5A00F9BB1D /* ProfileViewController.swift */; };
 		22EB01AB1E40A57F00F9BB1D /* settings_ic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 22EB01AA1E40A57F00F9BB1D /* settings_ic@2x.png */; };
@@ -64,6 +65,7 @@
 		222BE3101E38E15200FF48D1 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		223E0C481E4322FF004A474C /* AlertUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertUtil.swift; sourceTree = "<group>"; };
 		223E0C4A1E43230B004A474C /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		223E0C501E4348E6004A474C /* home@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home@2x.png"; sourceTree = "<group>"; };
 		224245271E3F88EB0075249E /* settingsTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = settingsTableCell.swift; sourceTree = "<group>"; };
 		22EB01A71E407C5A00F9BB1D /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		22EB01AA1E40A57F00F9BB1D /* settings_ic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings_ic@2x.png"; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 			children = (
 				22EB01AA1E40A57F00F9BB1D /* settings_ic@2x.png */,
 				22EB01AC1E40A5A000F9BB1D /* staff_ic@2x.png */,
+				223E0C501E4348E6004A474C /* home@2x.png */,
 				22EB01B01E40A5EA00F9BB1D /* mail_ic@2x.png */,
 			);
 			name = Images;
@@ -364,6 +367,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				223E0C511E4348E6004A474C /* home@2x.png in Resources */,
 				22EB01AD1E40A5A000F9BB1D /* staff_ic@2x.png in Resources */,
 				22EB01B11E40A5EA00F9BB1D /* mail_ic@2x.png in Resources */,
 				22EBC0B31E3895B50088B1A2 /* LaunchScreen.storyboard in Resources */,

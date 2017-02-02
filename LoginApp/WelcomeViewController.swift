@@ -24,7 +24,9 @@ class WelcomeViewController: UIViewController {
 		
 		if let user: UserInfo = UserInfo.mr_findFirst(byAttribute: "emailId", withValue: emailId) as? UserInfo
 		{
+			
 			if let name = user.userName {
+				
 				renderWelcome(message: name)
 			}
 		}
@@ -34,19 +36,16 @@ class WelcomeViewController: UIViewController {
 		
 		super.viewWillAppear(true)
 		
-		self.tabBarController?.title = "Profile"
-
+		self.tabBarController?.title = "Home"
 	}
 	
 	func renderWelcome(message: String) {
 		
 		welcomeLabel.text = "Welcome \(message)"
-		
 	}
 	
 	override func didReceiveMemoryWarning() {
 		
 		super.didReceiveMemoryWarning()
-		
 	}
 }
