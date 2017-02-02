@@ -48,6 +48,4 @@ class Helpers: NSObject {
 		}
 		return (true,"Success")
 	}
-
-
 }

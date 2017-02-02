@@ -245,7 +245,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" tag="1" title="Home" image="home.png" id="9sl-sn-f6Q"/>
+                    <tabBarItem key="tabBarItem" tag="1" title="Home" image="home_ic" id="9sl-sn-f6Q"/>
                     <connections>
                         <outlet property="welcomeLabel" destination="awB-UF-OHZ" id="gWG-KU-VjF"/>
                     </connections>
@@ -605,7 +605,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="home.png" width="20" height="26"/>
+        <image name="home_ic" width="20" height="26"/>
         <image name="iconCheckmark" width="14" height="11"/>
         <image name="settings_ic.png" width="23" height="21"/>
         <image name="staff_ic.png" width="23" height="21"/>

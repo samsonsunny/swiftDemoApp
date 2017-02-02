@@ -14,12 +14,8 @@
 		222BE3111E38E15200FF48D1 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222BE3101E38E15200FF48D1 /* ChangePasswordViewController.swift */; };
 		223E0C491E4322FF004A474C /* AlertUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223E0C481E4322FF004A474C /* AlertUtil.swift */; };
 		223E0C4B1E43230B004A474C /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223E0C4A1E43230B004A474C /* Helpers.swift */; };
-		223E0C511E4348E6004A474C /* home@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 223E0C501E4348E6004A474C /* home@2x.png */; };
 		224245281E3F88EB0075249E /* settingsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224245271E3F88EB0075249E /* settingsTableCell.swift */; };
 		22EB01A81E407C5A00F9BB1D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EB01A71E407C5A00F9BB1D /* ProfileViewController.swift */; };
-		22EB01AB1E40A57F00F9BB1D /* settings_ic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 22EB01AA1E40A57F00F9BB1D /* settings_ic@2x.png */; };
-		22EB01AD1E40A5A000F9BB1D /* staff_ic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 22EB01AC1E40A5A000F9BB1D /* staff_ic@2x.png */; };
-		22EB01B11E40A5EA00F9BB1D /* mail_ic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 22EB01B01E40A5EA00F9BB1D /* mail_ic@2x.png */; };
 		22EBC0A61E3895B50088B1A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EBC0A51E3895B50088B1A2 /* AppDelegate.swift */; };
 		22EBC0AB1E3895B50088B1A2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22EBC0A91E3895B50088B1A2 /* Main.storyboard */; };
 		22EBC0AE1E3895B50088B1A2 /* LoginApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22EBC0AC1E3895B50088B1A2 /* LoginApp.xcdatamodeld */; };
@@ -65,12 +61,8 @@
 		222BE3101E38E15200FF48D1 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		223E0C481E4322FF004A474C /* AlertUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertUtil.swift; sourceTree = "<group>"; };
 		223E0C4A1E43230B004A474C /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
-		223E0C501E4348E6004A474C /* home@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home@2x.png"; sourceTree = "<group>"; };
 		224245271E3F88EB0075249E /* settingsTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = settingsTableCell.swift; sourceTree = "<group>"; };
 		22EB01A71E407C5A00F9BB1D /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		22EB01AA1E40A57F00F9BB1D /* settings_ic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings_ic@2x.png"; sourceTree = "<group>"; };
-		22EB01AC1E40A5A000F9BB1D /* staff_ic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "staff_ic@2x.png"; sourceTree = "<group>"; };
-		22EB01B01E40A5EA00F9BB1D /* mail_ic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mail_ic@2x.png"; sourceTree = "<group>"; };
 		22EBC0A21E3895B50088B1A2 /* LoginApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoginApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22EBC0A51E3895B50088B1A2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22EBC0AA1E3895B50088B1A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -160,17 +152,6 @@
 			name = TableView;
 			sourceTree = "<group>";
 		};
-		22EB01A91E40A55900F9BB1D /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				22EB01AA1E40A57F00F9BB1D /* settings_ic@2x.png */,
-				22EB01AC1E40A5A000F9BB1D /* staff_ic@2x.png */,
-				223E0C501E4348E6004A474C /* home@2x.png */,
-				22EB01B01E40A5EA00F9BB1D /* mail_ic@2x.png */,
-			);
-			name = Images;
-			sourceTree = "<group>";
-		};
 		22EBC0991E3895B50088B1A2 = {
 			isa = PBXGroup;
 			children = (
@@ -200,7 +181,6 @@
 				224245261E3F88CB0075249E /* TableView */,
 				220B963A1E3F26C900115845 /* ViewController */,
 				22EBC0A51E3895B50088B1A2 /* AppDelegate.swift */,
-				22EB01A91E40A55900F9BB1D /* Images */,
 				22EBC0A91E3895B50088B1A2 /* Main.storyboard */,
 				22EBC0AF1E3895B50088B1A2 /* Assets.xcassets */,
 				22EBC0B11E3895B50088B1A2 /* LaunchScreen.storyboard */,
@@ -367,13 +347,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				223E0C511E4348E6004A474C /* home@2x.png in Resources */,
-				22EB01AD1E40A5A000F9BB1D /* staff_ic@2x.png in Resources */,
-				22EB01B11E40A5EA00F9BB1D /* mail_ic@2x.png in Resources */,
 				22EBC0B31E3895B50088B1A2 /* LaunchScreen.storyboard in Resources */,
 				22EBC0B01E3895B50088B1A2 /* Assets.xcassets in Resources */,
 				22EBC0AB1E3895B50088B1A2 /* Main.storyboard in Resources */,
-				22EB01AB1E40A57F00F9BB1D /* settings_ic@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
