@@ -7,6 +7,7 @@
 //
 
 import UIKit
+
 import MagicalRecord
 
 class ChangePasswordViewController: UIViewController {
@@ -18,6 +19,8 @@ class ChangePasswordViewController: UIViewController {
 	
 	let defaults = UserDefaults.standard
 
+	let alert = AlertUtil()
+	
 	override func viewDidLoad() {
 		
 		super.viewDidLoad()
@@ -31,22 +34,11 @@ class ChangePasswordViewController: UIViewController {
 		super.didReceiveMemoryWarning()
 	}
 	
-	func showAlert(message: String) {
-		
-		let alertController = UIAlertController(title: "", message: message, preferredStyle: .alert)
-		
-		let OKAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-		alertController.addAction(OKAction)
-		
-		self.present(alertController, animated: true, completion: nil)
-		
-	}
-	
 	@IBAction func updatePassword() {
 		
 		guard let oldPassword = oldPasswordField.text, let newPassword = newPasswordField.text else {
 			
-			showAlert(message: "Please provide value in both the fields")
+			alert.showAlert(message: "Please provide value in both the fields", on: self)
 			
 			return
 		}
@@ -55,14 +47,14 @@ class ChangePasswordViewController: UIViewController {
 		
 		guard let emailId = defaults.object(forKey: "loggedInUserEmail") as? String, let user: UserInfo = UserInfo.mr_findFirst(byAttribute: "emailId", withValue: emailId) as? UserInfo else {
 			
-			showAlert(message: "User data is not available in DB")
+			alert.showAlert(message: "User data is not available in DB", on: self)
 			
 			return
 		}
 		
 		guard let password = user.password, password == oldPassword else {
 			
-			showAlert(message: "Please provide old password")
+			alert.showAlert(message: "Please provide old password", on: self)
 			
 			return
 		}
@@ -73,11 +65,12 @@ class ChangePasswordViewController: UIViewController {
 			
 			if response {
 				
-				self.showAlert(message: "Password Updated")
+				self.alert.showAlert(message: "Password Updated", on: self)
 				
 				return
 			}
-			self.showAlert(message: "Oops! password not able to change")
+			
+			self.alert.showAlert(message: "Oops! password not able to change", on: self)
 		})
 	}
 }

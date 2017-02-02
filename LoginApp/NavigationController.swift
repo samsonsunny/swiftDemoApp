@@ -20,13 +20,7 @@ class NavigationController: UINavigationController {
 			
 			if let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "MainViewControllerID") as? MainViewController {
 				
-				self.pushViewController(nextViewController, animated: true)
-			}
-		}else{
-			
-			if let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarControllerID") as? MainTabBarController {
-				
-				self.pushViewController(nextViewController, animated: true)
+				self.addChildViewController(nextViewController)
 			}
 		}
 	}
@@ -34,13 +28,10 @@ class NavigationController: UINavigationController {
 	override func viewWillAppear(_ animated: Bool) {
 		
 		super.viewWillAppear(true)
-		
 	}
 	
 	override func didReceiveMemoryWarning() {
 		
 		super.didReceiveMemoryWarning()
-		
 	}
-	
 }

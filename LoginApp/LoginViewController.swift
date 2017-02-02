@@ -19,10 +19,13 @@ class LoginViewController: UIViewController {
 	
 	let defaults = UserDefaults.standard
 	
+	let alert = AlertUtil()
+	
 	override func viewDidLoad() {
 
 		super.viewDidLoad()
-
+		
+		self.navigationItem.setHidesBackButton(true, animated: true)
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -35,49 +38,16 @@ class LoginViewController: UIViewController {
 		super.didReceiveMemoryWarning()
 	}
 	
-	func validate(email: String, password: String) -> (success: Bool,text: String) {
-		
-		if email.isEmpty || password.isEmpty {
-			
-			return (false,"Please provide data in all the fields.")
-			
-		}
-		if !isValid(email: email) {
-			
-			return (false,"Please provide valid email id.")
-			
-		}
-		return (true,"Success")
-	}
-	
-	func isValid(email:String) -> Bool {
-		
-		let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}"
-		
-		return NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluate(with: email)
-		
-	}
-
-	func showAlert(message: String) {
-		
-		let alertController = UIAlertController(title: "", message: message, preferredStyle: .alert)
-		
-		let OKAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-		alertController.addAction(OKAction)
-		
-		self.present(alertController, animated: true, completion: nil)
-		
-	}
-	
 	@IBAction func checkLoginCredentials() {
 		
 		if let email = emailField.text, let password = passwordField.text {
 			
-			let response = validate(email: email, password: password)
+			let response = Helpers.validate(email: email, password: password)
 		
 			if !response.success {
 				
-				showAlert(message: response.text)
+				alert.showAlert(message: response.text, on: self)
+				
 				return
 			}
 	
@@ -86,7 +56,7 @@ class LoginViewController: UIViewController {
 				
 				guard let storedPassword = user.password, password == storedPassword else {
 					
-					showAlert(message: "Please check your password")
+					alert.showAlert(message: "Please check your password", on: self)
 					
 					return
 				}
@@ -103,12 +73,21 @@ class LoginViewController: UIViewController {
 					self.navigationController?.pushViewController(nextViewController, animated: true)
 				}else{
 					
-					showAlert(message: "Please try again later")
+					alert.showAlert(message: "Please try again later", on: self)
 				}
 			}else{
 				
-				showAlert(message: "Login doesn't exist")
+				alert.showAlert(message: "Login doesn't exist", on: self)
 			}
 		}
 	}
+	
+	@IBAction func pushToSignUp(_ sender: Any) {
+		
+		if let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "SignupViewControllerID") as? SignupViewController {
+			
+			self.navigationController?.pushViewController(nextViewController, animated: true)
+		}
+	}
+	
 }

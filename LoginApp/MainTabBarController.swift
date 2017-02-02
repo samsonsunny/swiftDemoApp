@@ -17,12 +17,13 @@ class MainTabBarController: UITabBarController {
 		super.viewDidLoad()
 		
 		self.selectedIndex = 1
+		
+		self.navigationItem.setHidesBackButton(true, animated: true)
 	}
 	
 	override func didReceiveMemoryWarning() {
 		
 		super.didReceiveMemoryWarning()
 	}
-	
 }
 

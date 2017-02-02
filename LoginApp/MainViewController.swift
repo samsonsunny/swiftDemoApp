@@ -12,27 +12,35 @@ class MainViewController: UIViewController {
 	
 	
 	override func viewDidLoad() {
+		
 		super.viewDidLoad()
 		
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
+		
 		super.viewWillAppear(true)
-		//	self.navigationController?.setNavigationBarHidden(true, animated: false)
 	}
 	
 	override func didReceiveMemoryWarning() {
+		
 		super.didReceiveMemoryWarning()
 	}
 	
 	@IBAction func showLoginPage() {
 		if let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewControllerID") as? LoginViewController {
-			self.navigationController?.pushViewController(nextViewController, animated: true)
+			
+			if self.navigationController != nil {
+				
+				self.navigationController?.pushViewController(nextViewController, animated: true)
+			}
 		}
 	}
 	
 	@IBAction func showSignupPage() {
+		
 		if let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "SignupViewControllerID") as? SignupViewController {
+			
 			self.navigationController?.pushViewController(nextViewController, animated: true)
 		}
 	}
